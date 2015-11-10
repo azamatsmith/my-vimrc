@@ -22,6 +22,9 @@ Plugin 'tpope/vim-commentary.git'
 " Vim Surround plugin
 Plugin 'tpope/vim-surround.git'
 
+" Vim Repeat plugin
+Plugin 'tpope/vim-repeat'
+
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
