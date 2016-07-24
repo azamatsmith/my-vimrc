@@ -35,6 +35,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 "Solarized Colorscheme
 Bundle 'altercation/vim-colors-solarized'
@@ -150,4 +151,8 @@ nnoremap <esc> :noh<return><esc>
 " Paste helper
 set pastetoggle=<F2>
 
+" Place the swap files somewhere else!
+set swapfile
+set dir=~/tmp
 
+set nofoldenable
