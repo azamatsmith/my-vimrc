@@ -2,6 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" what is a vimrc?
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
