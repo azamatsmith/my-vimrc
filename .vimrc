@@ -2,10 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" what is a vimrc?
-
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -17,6 +15,20 @@ Plugin 'VundleVim/Vundle.vim'
 
 " NerdTree plugin
 Plugin 'scrooloose/nerdtree.git'
+
+"Syntastic
+Plugin 'vim-syntastic/syntastic'
+
+"CtrlP
+Plugin 'kien/ctrlp.vim'
+
+"ELm Vim
+Plugin 'elmcast/elm-vim'
+
+"TypeScript
+Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
 
 " Vim Commentary plugin
 Plugin 'tpope/vim-commentary.git'
@@ -68,7 +80,9 @@ filetype plugin indent on    " required
 
 " set tab stuff
 set tabstop=2
+set softtabstop=0 expandtab 
 set shiftwidth=2
+set smarttab
 
 " set smartindent
 set smartindent
@@ -80,7 +94,11 @@ let mapleader=","
 set hlsearch
 
 " Set paths for all ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Set working path
+let g:ctrlp_working_path_mode = 'r'
 
 syntax enable
 set background=dark
@@ -158,3 +176,46 @@ set swapfile
 set dir=~/tmp
 
 set nofoldenable
+
+"Syntastic settings
+set statusline+=%#warningsmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%{fugitive#statusline()}
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ESLINT
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+
+"Elm Setup
+let g:polygot_disabled = ['elm']
+let g:elm_detailed_complete = 1 
+let g:elm_format_autosave = 1 
+let g:elm_syntastic_show_warnings = 1 
+
+"TS Settings
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+" let g:tsuquyomi_disable_quickfix = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi']
+" let g:syntastic_typescript_checkers = ['tsc']
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested cwindow
+"
+" Remove Trailing Whitespace
+autocmd BufWritePre *.js %s/\s\+$//e"
+
+" Go to matching element by pressing % inside element
+runtime macros/matchit.vim
+
+" Text width
+au BufRead,BufNewFile *.js setlocal textwidth=80
+highlight ColorColumn ctermbg=magenta
+  call matchadd('ColorColumn', '\%>81v.\+', -1)
+  set showbreak=↪
+
+autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
+let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
