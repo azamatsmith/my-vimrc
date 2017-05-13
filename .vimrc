@@ -2,6 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" what is a vimrc?
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
@@ -20,7 +22,7 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'vim-syntastic/syntastic'
 
 "CtrlP
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 "ELm Vim
 Plugin 'elmcast/elm-vim'
@@ -181,14 +183,21 @@ set nofoldenable
 set statusline+=%#warningsmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-set statusline+=%{fugitive#statusline()}
+" set statusline+=%{fugitive#statusline()}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" let g:syntastic_debug=3
 
 " ESLINT
 let g:syntastic_javascript_checkers = [ 'eslint' ]
+" let g:syntastic_javascript_eslint_exe = 'yarn run lint --'
+let g:syntastic_javascript_eslint_exe = 'eslint .'
+
+"Ale
+" let g:ale_lint_on_save = 1
+  " let g:ale_lint_on_text_changed = 1
 
 "Elm Setup
 let g:polygot_disabled = ['elm']
@@ -197,8 +206,8 @@ let g:elm_format_autosave = 1
 let g:elm_syntastic_show_warnings = 1 
 
 "TS Settings
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
+  let g:typescript_compiler_binary = 'tsc'
+  let g:typescript_compiler_options = ''
 " let g:tsuquyomi_disable_quickfix = 1
 " let g:syntastic_typescript_checkers = ['tsuquyomi']
 " let g:syntastic_typescript_checkers = ['tsc']
