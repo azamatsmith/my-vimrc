@@ -2,14 +2,16 @@
 
 ### To add .vimrc and plugins
     
-    - Get .vimrc from github
-    - `wget https://raw.githubusercontent.com/azamatsmith/my-vimrc/master/.vimrc ~/.vimrc`
-    - Get Vundle from github
+    1 - Get .vimrc from github
+    `wget https://raw.githubusercontent.com/azamatsmith/my-vimrc/master/.vimrc ~/.vimrc`
+    2 - Get Vundle from github
     - `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-    - add a temp directory for swap files
+    3 - add a temp directory for swap files
     - `mkdir ~/tmp`
-    - open vim
+    4 - open vim
     - `vim`
-    - Install Bundles
+    5 - Install Bundles
     - `:VundleInstall`
+    
+    Enjoy!
    
