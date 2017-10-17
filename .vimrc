@@ -36,6 +36,9 @@ Plugin 'tpope/vim-commentary.git'
 " Vim Surround plugin
 Plugin 'tpope/vim-surround.git'
 
+" Vim Prettier
+Plugin 'prettier/vim-prettier'
+
 " Vim Repeat plugin
 Plugin 'tpope/vim-repeat'
 
@@ -226,3 +229,13 @@ highlight ColorColumn ctermbg=magenta
 
 autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
 let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
+
+" Prettier config
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
+
+" single quotes over double quotes
+let g:prettier#config#single_quote = 'true'
+
+" print spaces between brackets
+let g:prettier#config#bracket_spacing = 'false'
