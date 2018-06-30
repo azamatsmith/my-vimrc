@@ -7,15 +7,27 @@
   2. Get Vundle from github
   
       `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-  3. Add a temp directory for swap files
+      
+  3. Install vim plug
+  ```
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ```
   
+  4. Add a temp directory for swap files
       `mkdir ~/tmp`
-  4. Open vim
-  
+      
+  5. Open vim
       `vim`
-  5. Install Plugins
+      
+  6. Install Plugins
+  ```
+  :PlugInstall
   
-      `:VundleInstall`
+  then
+  
+  :VundleInstall
+  ```
     
   Enjoy!
    
