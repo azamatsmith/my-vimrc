@@ -2,84 +2,93 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
-
-" NerdTree plugin
-Plugin 'scrooloose/nerdtree.git'
-
-"Syntastic
-Plugin 'vim-syntastic/syntastic'
-
-"CtrlP
-Plugin 'ctrlpvim/ctrlp.vim'
-
-"ELm Vim
-Plugin 'elmcast/elm-vim'
-
-"TypeScript
-Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
-
-" Vim Commentary plugin
-Plugin 'tpope/vim-commentary.git'
-
-" Vim Surround plugin
-Plugin 'tpope/vim-surround.git'
-
-" Vim Prettier
-Plugin 'prettier/vim-prettier'
-
-" Vim Repeat plugin
-Plugin 'tpope/vim-repeat'
-
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-
-" Autoclose bracket,paren,tag, etc 
-Plugin 'Raimondi/delimitMate'
 
 " Plugin for Snip Mate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+" Arduino
+Plugin 'sudar/vim-arduino-syntax'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" VIM PLUG 
+call plug#begin('~/.vim/plugged')
+
+" FZF 
+" https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'
+
+Plug 'rking/ag.vim'
+
+Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+
+" Ack
+" Plug 'mileszs/ack.vim'
+
+" let Vundle manage Vundle, required
+Plug 'VundleVim/Vundle.vim'
+
+" NerdTree plugin
+Plug 'scrooloose/nerdtree'
+
+Plug 'prettier/vim-prettier'
+
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
+"Ale
+Plug 'w0rp/ale'
+
+"Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"ELm Vim
+Plug 'elmcast/elm-vim'
+
+"TypeScript
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+
+" Vim Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" Vim Surround plugin
+Plug 'tpope/vim-surround'
+
+" Vim Repeat plugin
+Plug 'tpope/vim-repeat'
+
+" plugin on GitHub repo
+Plug 'tpope/vim-fugitive'
+" Plug 'christoomey/vim-conflicted'
+
+" Autoclose bracket,paren,tag, etc 
+Plug 'Raimondi/delimitMate'
+
 
 "Solarized Colorscheme
-Bundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 "Install vimux
 "Plugin benmills/vimux
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+
 
 filetype plugin indent on    " required
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" Plugin helper pathogen
-"execute pathogen#infect()
 
 " set tab stuff
 set tabstop=2
@@ -105,7 +114,7 @@ let g:ctrlp_working_path_mode = 'r'
 
 syntax enable
 set background=dark
-let g:solarized_termcolors = 256
+" let g:solarized_termcolors = 256
 colorscheme solarized
 
 " relative numbering
@@ -117,7 +126,6 @@ set number
 " nnoremap <c-s> <Esc>:Update<CR>
 inoremap <c-s> <Esc>:w!<CR>
 nnoremap <c-s> <Esc>:w!<CR>
-" map <leader>rc :execute "tabnew " . $MYVIMRC<CR>>
 
 " disable those arrow keys bro
 inoremap <Up> <NOP>
@@ -133,9 +141,6 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " Allow Edits in Nerdtree
 set modifiable
-
-" Splitting out of quotes in functions
-" imap <C-j> <CR><Esc>O
 
 " NERDTree
 " nmap <C-n> :NERDTreeToggle<CR>
@@ -162,13 +167,18 @@ nmap <leader>snip :SnipMateOpenSnippetFiles<cr>
 "Non Plugin Specific Key Mappings
 nmap <leader>b ^
 nmap <leader>e $
+
+" Map FZF
+map <leader>t :execute "FZF"<CR> 
+
 " Maps for navigating tabs
 map  ¬ :tabn<CR>
 map  ˙ :tabp<CR>
 
 " Quick edit vimrc
-map <leader>rc :execute "tabnew " . $MYVIMRC<CR>>
-map <leader>rs :execute "source " . $MYVIMRC<CR>>
+map <leader>rc :execute "tabnew " . $MYVIMRC<CR>
+map <leader>rs :execute "source " . $MYVIMRC<CR>
+" map <leader>rz :execute "source ~/.zshrc"<CR>
 nnoremap <esc> :noh<return><esc>
 
 " Paste helper
@@ -180,62 +190,113 @@ set dir=~/tmp
 
 set nofoldenable
 
-"Syntastic settings
-set statusline+=%#warningsmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" set statusline+=%{fugitive#statusline()}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_debug=3
-
-" ESLINT
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-" let g:syntastic_javascript_eslint_exe = 'yarn run lint --'
-let g:syntastic_javascript_eslint_exe = 'eslint .'
-
-"Ale
-" let g:ale_lint_on_save = 1
-  " let g:ale_lint_on_text_changed = 1
-
-"Elm Setup
-let g:polygot_disabled = ['elm']
-let g:elm_detailed_complete = 1 
-let g:elm_format_autosave = 1 
-let g:elm_syntastic_show_warnings = 1 
-
-"TS Settings
-  let g:typescript_compiler_binary = 'tsc'
-  let g:typescript_compiler_options = ''
-" let g:tsuquyomi_disable_quickfix = 1
-" let g:syntastic_typescript_checkers = ['tsuquyomi']
-" let g:syntastic_typescript_checkers = ['tsc']
-" autocmd QuickFixCmdPost [^l]* nested cwindow
-" autocmd QuickFixCmdPost    l* nested cwindow
-"
 " Remove Trailing Whitespace
 autocmd BufWritePre *.js %s/\s\+$//e"
 
 " Go to matching element by pressing % inside element
 runtime macros/matchit.vim
 
-" Text width
-au BufRead,BufNewFile *.js setlocal textwidth=80
-highlight ColorColumn ctermbg=magenta
-  call matchadd('ColorColumn', '\%>81v.\+', -1)
-  set showbreak=↪
+autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
+let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
+
+
+"Ale config
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+" Put this in vimrc or a plugin file of your own.
+" After this is configured, :ALEFix will try and fix your JS code with ESLint.
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+" let g:ale_fix_on_save = 1
+
+" Allow airline to show ale errors
+let g:airline#extensions#ale#enabled = 1
+
+" Prettier Config
+let g:prettier#exec_cmd_async = 1
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#config#single_quote = 'true'
+
+let g:prettier#config#trailing_comma = 'es5'
+
+let g:prettier#config#jsx_bracket_same_line = 'false'
+
+map <leader>rs :execute "source " . $MYVIMRC<CR>
+" map <leader>rz :execute "source ~/.zshrc"<CR>
+nnoremap <esc> :noh<return><esc>
+
+" Paste helper
+set pastetoggle=<F2>
+
+" Place the swap files somewhere else!
+set swapfile
+set dir=~/tmp
+
+set nofoldenable
+
+" Remove Trailing Whitespace
+autocmd BufWritePre *.js %s/\s\+$//e"
+
+" Go to matching element by pressing % inside element
+runtime macros/matchit.vim
 
 autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
 let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
 
-" Prettier config
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
 
-" single quotes over double quotes
+"Ale config
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+" Put this in vimrc or a plugin file of your own.
+" After this is configured, :ALEFix will try and fix your JS code with ESLint.
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+" let g:ale_fix_on_save = 1
+
+" Allow airline to show ale errors
+let g:airline#extensions#ale#enabled = 1
+
+" Prettier Config
+let g:prettier#exec_cmd_async = 1
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+let g:prettier#quickfix_enabled = 0
+
 let g:prettier#config#single_quote = 'true'
 
-" print spaces between brackets
-let g:prettier#config#bracket_spacing = 'false'
+let g:prettier#config#trailing_comma = 'es5'
+
+let g:prettier#config#jsx_bracket_same_line = 'false'
+
+"Silver Searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" CarbonNowSh
+map <leader>ss :CarbonNowSh<CR>
+
+"Ag
+let g:ag_working_path_mode="r"
+
+nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
