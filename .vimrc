@@ -13,6 +13,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'christoomey/vim-tmux-navigator'
+
 " Arduino
 Plugin 'sudar/vim-arduino-syntax'
 
@@ -32,6 +34,9 @@ Plug 'rking/ag.vim'
 
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
+
+" Git Gutter
+Plug 'airblade/vim-gitgutter'
 
 " Ack
 " Plug 'mileszs/ack.vim'
@@ -298,5 +303,10 @@ map <leader>ss :CarbonNowSh<CR>
 
 "Ag
 let g:ag_working_path_mode="r"
+
+" Set lower update time for Git Gutter
+set updatetime=100
+
+vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
 
 nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
