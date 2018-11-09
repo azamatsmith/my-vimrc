@@ -1,0 +1,74 @@
+snippet lorem
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+snippet jsxcomment
+	{/* ${1} */}
+
+snippet getbounding
+	getBoundingClientRect()
+
+snippet media
+	// ns 
+	@media screen and (min-width: 30em){}
+	// medium
+	@media screen and (min-width: 30em) and (max-width: 960px){}
+	// large 
+	@media screen and (min-width: 960px){}
+
+snippet eslint-disable
+	// eslint-disable-next-line
+
+snippet styled
+	import styled from 'styled-components'; 
+
+snippet connect
+	import { connect } from 'react-redux';
+
+snippet exportfile
+	export {default as ${1:name}} from './$1';
+
+snippet pts
+	PropTypes.string,
+
+snippet ptf
+	PropTypes.func,
+
+snippet ptn
+	PropTypes.number,
+	
+snippet ptb
+	PropTypes.bool,
+
+snippet pta
+	PropTypes.any,
+
+snippet ri
+	import React from 'react';
+	import PropTypes from 'prop-types';
+
+snippet rf 
+	function ${1:Component Name}() {
+		return (
+			<div className="$1"> 
+				<span>content</span>
+			</div>
+		)
+	}
+	
+	$1.propTypes = {}
+
+	$1.defaultProps = {}
+
+	export default $1;
+
+snippet rc
+	export default class ${1:component_name} extends React.Component {
+		static propTypes = {}
+		static defaultProps = {}
+
+		render() {
+			return (
+				<div className="$1">${0:content}</div>	
+			);	
+		}
+	}
