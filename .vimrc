@@ -8,11 +8,13 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin for Snip Mate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+
+" Plugin 'SirVer/ultisnips'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+
 Plugin 'christoomey/vim-tmux-navigator'
 
 " Arduino
@@ -165,9 +167,22 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> <c-h> :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
 
+
 " SnipMate
 imap <tab> <Plug>snipMateNextOrTrigger
 nmap <leader>snip :SnipMateOpenSnippetFiles<cr>
+
+" UltiSnips 
+"
+" autocmd FileType javascript UltiSnipsAddFiletypes javascript-node
+" let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsEditSplit="horizontal"
+" let g:UltiSnipsListSnippets='<leader>snip'
+
+
 
 "Non Plugin Specific Key Mappings
 nmap <leader>b ^
