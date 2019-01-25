@@ -328,6 +328,7 @@ endif
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " CarbonNowSh
+let g:carbon_now_sh_browser = 'google-chrome'
 map <leader>ss :CarbonNowSh<CR>
 
 "Ag
