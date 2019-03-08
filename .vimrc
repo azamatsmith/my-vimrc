@@ -41,6 +41,8 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 " Git Gutter
 Plug 'airblade/vim-gitgutter'
 
+Plug 'vim-scripts/CSSMinister'
+
 " Ack
 " Plug 'mileszs/ack.vim'
 
@@ -212,8 +214,7 @@ map  ˙ :tabp<CR>
 " Quick edit vimrc
 map <leader>rc :execute "tabnew " . $MYVIMRC<CR>
 map <leader>rs :execute "source " . $MYVIMRC<CR>
-" map <leader>rz :execute "source ~/.zshrc"<CR>
-nnoremap <esc> :noh<return><esc>
+map <leader>rz :execute "source ~/.zshrc"<CR>
 
 " Paste helper
 set pastetoggle=<F2>
@@ -265,10 +266,6 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'es5'
 
 let g:prettier#config#jsx_bracket_same_line = 'false'
-
-map <leader>rs :execute "source " . $MYVIMRC<CR>
-" map <leader>rz :execute "source ~/.zshrc"<CR>
-nnoremap <esc> :noh<return><esc>
 
 " Paste helper
 set pastetoggle=<F2>
@@ -339,12 +336,14 @@ set updatetime=100
 
 vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
 
-nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" placeholder for italics if I ever get them working
-" set t_ZH=[3m
-" set t_ZR=[23m
-"
+" Css color commands
+" <leader>x - convert to hex
+" <leader>r - convert to rgb
+" <leader>h - convert to hsl
+" <leader>ra - convert to rgba
+" <leader>ha - convert to hsla
 
 if (empty($TMUX))
   if (has("nvim"))
