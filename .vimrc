@@ -33,10 +33,13 @@ Plug 'junegunn/fzf'
 Plug '/usr/local/opt/fzf'
 
 Plug 'rking/ag.vim'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'jxnblk/vim-mdx-js'
 
 " Git Gutter
 Plug 'airblade/vim-gitgutter'
@@ -157,10 +160,10 @@ inoremap <Left> <NOP>
 inoremap <Right> <NOP>
  
 " Smoothscroll mappings
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " Allow Edits in Nerdtree
 set modifiable
@@ -231,8 +234,6 @@ autocmd BufWritePre *.js %s/\s\+$//e"
 " Go to matching element by pressing % inside element
 runtime macros/matchit.vim
 
-autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
-let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
 
 
 "Ale config
@@ -259,6 +260,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
+
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#config#single_quote = 'true'
@@ -266,6 +268,11 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'es5'
 
 let g:prettier#config#jsx_bracket_same_line = 'false'
+
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " Paste helper
 set pastetoggle=<F2>
@@ -282,9 +289,9 @@ autocmd BufWritePre *.js %s/\s\+$//e"
 " Go to matching element by pressing % inside element
 runtime macros/matchit.vim
 
+set spellfile=$HOME/Documents/vim/spell/en.utf-8.add
 autocmd BufNewFile,BufRead *.md set spell | set lbr | set nonu
 let g:markdown_fenced_languages = ['html', 'json', 'css', 'javascript', 'elm', 'vim']
-
 
 "Ale config
 let g:ale_linters = {
@@ -299,7 +306,7 @@ let g:ale_fixers = {
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 " Allow airline to show ale errors
 let g:airline#extensions#ale#enabled = 1
@@ -342,7 +349,7 @@ vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
 " <leader>x - convert to hex
 " <leader>r - convert to rgb
 " <leader>h - convert to hsl
-" <leader>ra - convert to rgba
+" <leader>ra
 " <leader>ha - convert to hsla
 
 if (empty($TMUX))
