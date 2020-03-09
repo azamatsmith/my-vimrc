@@ -1,3 +1,6 @@
+snippet testid
+	'[data-testid="${0}"]'
+
 snippet theme
 	${({theme}) => theme.${0}};
 
@@ -9,14 +12,16 @@ snippet rel
 
 snippet story
 	import React from 'react';
-	import { storiesOf } from '@storybook/react';
-	import { checkA11y } from '@storybook/addon-a11y';
-	import ComponentName from './';
+	import ${1:ComponentName} from './';
 
-	storiesOf('ComponentName', module)
-		// .addDecorator(story => <ComponentName>{story()}</ComponentName>)
-		.addDecorator(checkA11y)
-		.addWithJSX('default', () => <ComponentName>${0}</ComponentName>);
+	export default {
+		component: $1,	
+		title: 'components/$1',
+	}
+	
+	export const defaultComponent = () => (
+		<$1>some children</$1>	
+	);
 
 snippet cn
 	import classNames from 'classnames';
@@ -31,12 +36,19 @@ snippet getbounding
 	getBoundingClientRect()
 
 snippet media
-	// ns 
-	@media screen and (min-width: 30em){}
-	// medium
-	@media screen and (min-width: 30em) and (max-width: 960px){}
-	// large 
-	@media screen and (min-width: 960px){}
+	const sizes = {
+		sm: '20em',
+		md: '48em',
+		lg: '64em',
+	};
+
+	export const media = {
+		sm: \`@media only screen and (max-width: ${sizes.md})\`,
+		ns: \`@media screen and (min-width: ${sizes.md})\`,
+		md: \`@media screen and (min-width: ${sizes.md}) and (max-width: ${sizes.lg})\`,
+		lg: \`@media screen and (min-width: ${sizes.lg})\`,
+	};
+
 
 snippet ic
 	import { ${1: ComponentName } } from 'components'; 
@@ -76,7 +88,7 @@ snippet rf
 	function ${1:Component Name}() {
 		return (
 			<div className="$1"> 
-				<span>content</span>
+				<span>$1</span>
 			</div>
 		)
 	}
